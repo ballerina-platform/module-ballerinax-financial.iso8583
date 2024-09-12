@@ -1,12 +1,13 @@
 [package]
 org = "ballerinax"
-name = "financial.iso8583v87"
-version = "0.0.1"
+name = "financial.iso8583"
+version = "0.1.0"
 authors=["Ballerina"]
 keywords=["Financial", "iso8583", "v87"]
 distribution = "2201.10.0"
 repository="https://github.com/ballerina-platform/module-ballerinax-financial.iso8583"
 visibility="private"
+
 [[platform.java17.dependency]]
 groupId = "io.ballerinax"
 artifactId = "iso8583"
@@ -62,18 +63,6 @@ version = "2.73.2"
 
 # transitive dependency of org.jpos:jpos:2.1.9
 [[platform.java17.dependency]]
-groupId = "org.slf4j"
-artifactId = "slf4j-api"
-version = "1.7.32"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.hdrhistogram"
-artifactId = "HdrHistogram"
-version = "2.1.12"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
 groupId = "org.osgi"
 artifactId = "org.osgi.core"
 version = "6.0.0"
@@ -110,12 +99,6 @@ version = "2.9.2"
 
 # transitive dependency of org.jpos:jpos:2.1.9
 [[platform.java17.dependency]]
-groupId = "org.slf4j"
-artifactId = "jcl-over-slf4j"
-version = "1.7.32"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
 groupId = "net.i2p.crypto"
 artifactId = "eddsa"
 version = "0.3.0"
@@ -125,9 +108,3 @@ version = "0.3.0"
 groupId = "org.json.wso2"
 artifactId = "json"
 version = "3.0.0.wso2v4"
-
-# transitive dependency of org.json.wso2:json:3.0.0.wso2v4
-[[platform.java17.dependency]]
-groupId = "org.json"
-artifactId = "json"
-version = "20231013"

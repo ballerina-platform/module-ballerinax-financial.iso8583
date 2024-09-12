@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import financial.iso8583v87.java.lang as javalang;
+import financial.iso8583.java.lang as javalang;
 
 import ballerina/jballerina.java;
 
