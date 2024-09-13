@@ -78,7 +78,7 @@
 
     <resources>
         <resource>
-            <directory>${basedir}/src/main/resources</directory>
+            <directory>src/main/resources</directory>
             <includes>
                 <include>**/*.xml</include>
             </includes>
