@@ -20,6 +20,11 @@
             <artifactId>json</artifactId>
             <version>${org.json.wso2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${com.google.guava.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -109,5 +114,6 @@
         <org.json.wso2.version>3.0.0.wso2v4</org.json.wso2.version>
         <maven.spotbugsplugin.version>4.2.3</maven.spotbugsplugin.version>
         <maven.checkstyleplugin.version>3.1.0</maven.checkstyleplugin.version>
+        <com.google.guava.version>33.3.0-jre</com.google.guava.version>
     </properties>
 </project>

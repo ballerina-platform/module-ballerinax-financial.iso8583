@@ -16,6 +16,7 @@
 
 package io.ballerinax.iso8583;
 
+import io.ballerinax.iso8583.util.ISO8583CommonUtil;
 import io.ballerinax.iso8583.util.ISO8583Constant;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
@@ -64,19 +65,17 @@ public class ISO8583ParserUtil {
         ISOMsg isoMsg = new ISOMsg();
         isoMsg.setPackager(getIsoPackager());
 
+        for (String key : isoJson.keySet()) {
+            String elementValue = isoJson.getString(key);
+            int fieldID = ISO8583CommonUtil.getIsoFieldId(key);
+            isoMsg.set(fieldID, elementValue);
+        }
         try {
-            isoJson.keySet().forEach(key -> {
-                String elementValue = isoJson.getString(key);
-                int fieldID = Integer.parseInt(ISO8583Constant.ISO8583_NAME_IDS.get(key));
-                isoMsg.set(fieldID, elementValue);
-            });
             responseMessage = isoMsg.pack();
-            return new String(responseMessage, StandardCharsets.UTF_8);
-        } catch (NumberFormatException e) {
-            throw new ISO8583Exception("The fieldID does not contain a parsable integer" + e.getMessage(), e);
         } catch (ISOException e) {
             throw new ISO8583Exception("Couldn't pack ISO8583 Message. " + e.getMessage(), e);
         }
+        return new String(responseMessage, StandardCharsets.UTF_8);
     }
 
     /**
@@ -91,7 +90,7 @@ public class ISO8583ParserUtil {
         JSONObject payloadJson = new JSONObject();
         for (int i = 0; i <= isoMsg.getMaxField(); i++) {
             if (isoMsg.hasField(i)) {
-                String dataElement = ISO8583Constant.ISO8583_ID_NAMES.get(String.valueOf(i));
+                String dataElement = ISO8583CommonUtil.getIsoFieldName(i);
                 String value = isoMsg.getString(i);
                 if (dataElement != null) {
                     payloadJson.put(dataElement, value);

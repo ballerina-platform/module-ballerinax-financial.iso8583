@@ -103,6 +103,72 @@ groupId = "net.i2p.crypto"
 artifactId = "eddsa"
 version = "0.3.0"
 
+# transitive dependency of org.json.wso2:json:3.0.0.wso2v4
+[[platform.java17.dependency]]
+groupId = "org.json"
+artifactId = "json"
+version = "20231013"
+
+# transitive dependency of io.ballerinax:iso8583:0.1.0-SNAPSHOT
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "guava"
+version = "33.3.0-jre"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "failureaccess"
+version = "1.0.2"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "listenablefuture"
+version = "9999.0-empty-to-avoid-conflict-with-guava"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.code.findbugs"
+artifactId = "jsr305"
+version = "3.0.2"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "org.checkerframework"
+artifactId = "checker-qual"
+version = "3.43.0"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.errorprone"
+artifactId = "error_prone_annotations"
+version = "2.28.0"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.j2objc"
+artifactId = "j2objc-annotations"
+version = "3.0.0"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.slf4j"
+artifactId = "slf4j-api"
+version = "1.7.32"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.hdrhistogram"
+artifactId = "HdrHistogram"
+version = "2.1.12"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.slf4j"
+artifactId = "jcl-over-slf4j"
+version = "1.7.32"
+
 # transitive dependency of io.ballerinax:iso8583:0.1.0-SNAPSHOT
 [[platform.java17.dependency]]
 groupId = "org.json.wso2"
