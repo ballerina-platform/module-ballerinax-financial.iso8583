@@ -1,7 +1,7 @@
 [package]
 org = "ballerinax"
 name = "financial.iso8583"
-version = "0.1.0"
+version = "0.9.5"
 authors=["Ballerina"]
 keywords=["Financial", "iso8583", "v87"]
 distribution = "2201.10.0"
@@ -11,9 +11,9 @@ visibility="private"
 [[platform.java17.dependency]]
 groupId = "io.ballerinax"
 artifactId = "iso8583"
-version = "0.1.0-SNAPSHOT"
+version = "1.0.4"
 
-# transitive dependency of io.ballerinax:iso8583:0.1.0-SNAPSHOT
+# transitive dependency of io.ballerinax:iso8583:1.0.0
 [[platform.java17.dependency]]
 groupId = "org.jpos"
 artifactId = "jpos"
@@ -109,7 +109,7 @@ groupId = "org.json"
 artifactId = "json"
 version = "20231013"
 
-# transitive dependency of io.ballerinax:iso8583:0.1.0-SNAPSHOT
+# transitive dependency of io.ballerinax:iso8583:1.0.0
 [[platform.java17.dependency]]
 groupId = "com.google.guava"
 artifactId = "guava"
@@ -150,27 +150,3 @@ version = "2.28.0"
 groupId = "com.google.j2objc"
 artifactId = "j2objc-annotations"
 version = "3.0.0"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.slf4j"
-artifactId = "slf4j-api"
-version = "1.7.32"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.hdrhistogram"
-artifactId = "HdrHistogram"
-version = "2.1.12"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.slf4j"
-artifactId = "jcl-over-slf4j"
-version = "1.7.32"
-
-# transitive dependency of io.ballerinax:iso8583:0.1.0-SNAPSHOT
-[[platform.java17.dependency]]
-groupId = "org.json.wso2"
-artifactId = "json"
-version = "3.0.0.wso2v4"
