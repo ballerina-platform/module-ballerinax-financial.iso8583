@@ -1,7 +1,7 @@
 [package]
 org = "ballerinax"
 name = "financial.iso8583"
-version = "0.9.5"
+version = "0.9.7"
 authors=["Ballerina"]
 keywords=["Financial", "iso8583", "v87"]
 distribution = "2201.10.0"
@@ -11,7 +11,7 @@ visibility="private"
 [[platform.java17.dependency]]
 groupId = "io.ballerinax"
 artifactId = "iso8583"
-version = "1.0.4"
+version = "1.0.5"
 
 # transitive dependency of io.ballerinax:iso8583:1.0.0
 [[platform.java17.dependency]]
@@ -48,18 +48,6 @@ version = "2.0b6"
 groupId = "commons-cli"
 artifactId = "commons-cli"
 version = "1.4"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.bouncycastle"
-artifactId = "bcprov-lts8on"
-version = "2.73.2"
-
-# transitive dependency of org.jpos:jpos:2.1.9
-[[platform.java17.dependency]]
-groupId = "org.bouncycastle"
-artifactId = "bcpg-lts8on"
-version = "2.73.2"
 
 # transitive dependency of org.jpos:jpos:2.1.9
 [[platform.java17.dependency]]
