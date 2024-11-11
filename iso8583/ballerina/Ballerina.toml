@@ -11,7 +11,7 @@ visibility="private"
 [[platform.java17.dependency]]
 groupId = "io.ballerinax"
 artifactId = "iso8583"
-version = "1.0.0"
+version = "0.8.0"
 
 # transitive dependency of io.ballerinax:iso8583:1.0.0
 [[platform.java17.dependency]]
