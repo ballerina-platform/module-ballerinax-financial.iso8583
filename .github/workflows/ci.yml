@@ -28,7 +28,7 @@ jobs:
 
       - name: Ballerina Build
         run: |
-          mvn -f ../native clean install 
+          mvn -f iso8583/native clean install 
           pushd iso8583/ballerina
           bal pack
           popd 
@@ -49,7 +49,7 @@ jobs:
 
       - name: Ballerina Test
         run: |
-          mvn -f ../native clean install 
+          mvn -f iso8583/native clean install 
           pushd iso8583/ballerina
           bal test --code-coverage
           popd
