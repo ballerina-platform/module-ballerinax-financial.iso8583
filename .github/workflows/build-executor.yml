@@ -133,14 +133,14 @@ jobs:
         if: ${{ inputs.bal_central_environment == 'PROD' }}
         run: |
           # Extract the package name from working directory 
-          packageName=$(basename ${{ inputs.working_dir }})
+          # packageName=$(basename ${{ inputs.working_dir }})
 
           # Commit changes
           git config --global user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
           git config --global user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
           git add ${{ inputs.working_dir }}/Ballerina.toml
           git add ${{ inputs.working_dir }}/Dependencies.toml    
-          git commit -m "[Release ${packageName} ${{ steps.increment_patch_version.outputs.CURRENT_VERSION }}] Prepare for next dev cycle"
+          git commit -m "[Release ISO8583 ${{ steps.increment_patch_version.outputs.CURRENT_VERSION }}] Prepare for next dev cycle"
           git push origin ${{ steps.publish_release.outputs.BRANCH_NAME }}
           
           # Set the base and head branches
