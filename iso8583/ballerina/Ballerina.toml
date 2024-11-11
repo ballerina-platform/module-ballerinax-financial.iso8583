@@ -1,0 +1,139 @@
+[package]
+org = "ballerinax"
+name = "financial.iso8583"
+version = "0.8.0"
+authors=["Ballerina"]
+keywords=["Financial", "iso8583", "v2021"]
+distribution = "2201.10.0"
+repository="https://github.com/ballerina-platform/module-ballerinax-financial.iso8583"
+
+[[platform.java17.dependency]]
+groupId = "io.ballerinax"
+artifactId = "iso8583"
+version = "0.8.0"
+
+# transitive dependency of io.ballerinax:iso8583:1.0.0
+[[platform.java17.dependency]]
+groupId = "org.jpos"
+artifactId = "jpos"
+version = "2.1.9"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.jdom"
+artifactId = "jdom2"
+version = "2.0.6.1"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.javatuples"
+artifactId = "javatuples"
+version = "1.2"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.jline"
+artifactId = "jline"
+version = "3.23.0"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.apache-extras.beanshell"
+artifactId = "bsh"
+version = "2.0b6"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "commons-cli"
+artifactId = "commons-cli"
+version = "1.4"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.osgi"
+artifactId = "org.osgi.core"
+version = "6.0.0"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.yaml"
+artifactId = "snakeyaml"
+version = "2.0"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "jdbm"
+artifactId = "jdbm"
+version = "1.0"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "com.sleepycat"
+artifactId = "je"
+version = "18.3.12"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.apache.sshd"
+artifactId = "sshd-core"
+version = "2.9.2"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "org.apache.sshd"
+artifactId = "sshd-common"
+version = "2.9.2"
+
+# transitive dependency of org.jpos:jpos:2.1.9
+[[platform.java17.dependency]]
+groupId = "net.i2p.crypto"
+artifactId = "eddsa"
+version = "0.3.0"
+
+# transitive dependency of org.json.wso2:json:3.0.0.wso2v4
+[[platform.java17.dependency]]
+groupId = "org.json"
+artifactId = "json"
+version = "20231013"
+
+# transitive dependency of io.ballerinax:iso8583:1.0.0
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "guava"
+version = "33.3.0-jre"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "failureaccess"
+version = "1.0.2"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.guava"
+artifactId = "listenablefuture"
+version = "9999.0-empty-to-avoid-conflict-with-guava"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.code.findbugs"
+artifactId = "jsr305"
+version = "3.0.2"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "org.checkerframework"
+artifactId = "checker-qual"
+version = "3.43.0"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.errorprone"
+artifactId = "error_prone_annotations"
+version = "2.28.0"
+
+# transitive dependency of com.google.guava:guava:33.3.0-jre
+[[platform.java17.dependency]]
+groupId = "com.google.j2objc"
+artifactId = "j2objc-annotations"
+version = "3.0.0"
