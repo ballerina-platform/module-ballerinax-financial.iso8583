@@ -30,6 +30,7 @@ jobs:
           BALLERINA_STAGE_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -40,6 +41,7 @@ jobs:
           BALLERINA_DEV_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -47,6 +49,7 @@ jobs:
       - name: Run ballerina build for prod
         if: inputs.bal_central_environment == 'PROD'
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -57,6 +60,7 @@ jobs:
           BALLERINA_STAGE_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd
@@ -67,6 +71,7 @@ jobs:
           BALLERINA_DEV_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd    
@@ -76,6 +81,7 @@ jobs:
         env:
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd
@@ -118,6 +124,7 @@ jobs:
       - name: Ballerina Build after incrementing version
         if: ${{ inputs.bal_central_environment == 'PROD' }}
         run: |
+          mvn -f ../native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
