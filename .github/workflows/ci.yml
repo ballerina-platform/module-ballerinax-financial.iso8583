@@ -28,7 +28,7 @@ jobs:
 
       - name: Ballerina Build
         run: |
-          pushd iso8583
+          pushd iso8583/ballerina
           bal pack
           popd 
 
@@ -48,7 +48,7 @@ jobs:
 
       - name: Ballerina Test
         run: |
-          pushd iso8583
+          pushd iso8583/ballerina
           bal test --code-coverage
           popd
 
