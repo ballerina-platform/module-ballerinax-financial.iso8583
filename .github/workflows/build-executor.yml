@@ -19,6 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          check-latest: true
+
       - name: Set Up Ballerina
         uses: ballerina-platform/setup-ballerina@v1.1.0
         with:
@@ -30,7 +37,7 @@ jobs:
           BALLERINA_STAGE_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -41,7 +48,7 @@ jobs:
           BALLERINA_DEV_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -49,7 +56,7 @@ jobs:
       - name: Run ballerina build for prod
         if: inputs.bal_central_environment == 'PROD'
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -60,7 +67,7 @@ jobs:
           BALLERINA_STAGE_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd
@@ -71,7 +78,7 @@ jobs:
           BALLERINA_DEV_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd    
@@ -81,7 +88,7 @@ jobs:
         env:
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal push
           popd
@@ -124,7 +131,7 @@ jobs:
       - name: Ballerina Build after incrementing version
         if: ${{ inputs.bal_central_environment == 'PROD' }}
         run: |
-          mvn -f ../native clean install
+          mvn -f ./iso8583/native clean install
           pushd "${{ inputs.working_dir }}"
           bal pack
           popd
@@ -132,15 +139,13 @@ jobs:
       - name: Commit changes and make a PR
         if: ${{ inputs.bal_central_environment == 'PROD' }}
         run: |
-          # Extract the package name from working directory 
-          packageName=$(basename ${{ inputs.working_dir }})
 
           # Commit changes
           git config --global user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
           git config --global user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
           git add ${{ inputs.working_dir }}/Ballerina.toml
           git add ${{ inputs.working_dir }}/Dependencies.toml    
-          git commit -m "[Release ${packageName} ${{ steps.increment_patch_version.outputs.CURRENT_VERSION }}] Prepare for next dev cycle"
+          git commit -m "[Release ISO8583 ${{ steps.increment_patch_version.outputs.CURRENT_VERSION }}] Prepare for next dev cycle"
           git push origin ${{ steps.publish_release.outputs.BRANCH_NAME }}
           
           # Set the base and head branches
