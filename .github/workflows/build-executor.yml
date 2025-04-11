@@ -139,6 +139,8 @@ jobs:
       - name: Commit changes and make a PR
         if: ${{ inputs.bal_central_environment == 'PROD' }}
         run: |
+          # Extract the package name from working directory 
+          # packageName=$(basename ${{ inputs.working_dir }})
 
           # Commit changes
           git config --global user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
