@@ -24,6 +24,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          check-latest: true
+
       - name: Set Up Ballerina
         uses: ballerina-platform/setup-ballerina@v1.1.0
         with:
@@ -31,8 +38,8 @@ jobs:
 
       - name: Ballerina Build and Test
         run: |
-          mvn -f .iso8583/native clean install 
-          pushd "${{ inputs.working_dir }}"
+          mvn -f ./iso8583/native clean install 
+          pushd "${{ inputs.working_dir }}/ballerina"
           bal build 
           bal test --test-report --code-coverage --coverage-format=xml
           popd
