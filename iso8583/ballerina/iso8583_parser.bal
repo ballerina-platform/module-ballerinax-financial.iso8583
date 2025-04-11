@@ -1,4 +1,4 @@
-//  Copyright (c) 2024 WSO2 LLC. (https://www.wso2.com).
+//  Copyright (c) 2024-2025 WSO2 LLC. (https://www.wso2.com).
 
 //  WSO2 LLC. licenses this file to you under the Apache License,
 //  Version 2.0 (the "License"); you may not use this file except
@@ -131,15 +131,17 @@ public function decodeByteStream(byte[] data, int mtiLength = 4, int lengthHeade
     string base16Result = array:toBase16(data);
     // Validate the length of the received data.
     string lengthHeader = base16Result.substring(0, lengthHeaderSize * 2);
-    int|error payloadSize;
-    if isLengthHeaderASCII {
-        string|error lengthHeaderString = hexStringToString(lengthHeader);
-        if lengthHeaderString is error {
-            return createISOError("Error while converting length header to string. Caused by: " + lengthHeaderString.message());
+    int|error payloadSize = 0;
+    if lengthHeaderSize > 0 {
+        if isLengthHeaderASCII {
+            string|error lengthHeaderString = hexStringToString(lengthHeader);
+            if lengthHeaderString is error {
+                return createISOError("Error while converting length header to string. Caused by: " + lengthHeaderString.message());
+            }
+            payloadSize = int:fromString(lengthHeaderString);
+        } else {
+            payloadSize = int:fromHexString(lengthHeader);
         }
-        payloadSize = int:fromString(lengthHeaderString);
-    } else {
-        payloadSize = int:fromHexString(lengthHeader);
     }
     if payloadSize is error {
         return createISOError("Error while converting length header to int. Caused by: " + payloadSize.message());
@@ -218,7 +220,7 @@ public function toJson(byte[] data, int mtiLength = 4, int lengthHeaderSize = 4,
             decodeByteStream(data, mtiLength, lengthHeaderSize, isLengthHeaderASCII, customHeaderLength);
     if decodeByteStreamResult is string[] {
         log:printDebug(string `[ISO8583] Decoding completed`, decodeByteStreamContent = decodeByteStreamResult);
-        string mti = decodeByteStreamResult[0];
+        string mti = decodeByteStreamResult[0].padZero(4);
         string bitmaps = decodeByteStreamResult[1];
         string payload = decodeByteStreamResult[2];
         string msgToParse = mti + bitmaps + payload;
