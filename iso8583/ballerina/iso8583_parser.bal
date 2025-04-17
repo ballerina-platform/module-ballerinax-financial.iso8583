@@ -148,7 +148,7 @@ public function decodeByteStream(byte[] data, int mtiLength = 4, int lengthHeade
     }
     if data.length() - lengthHeaderSize != payloadSize {
         return createISOError("Received data length does not match the expected length. Expected: " +
-                payloadSize.toString() + ", Received: " + data.length().toString());
+                payloadSize.toString() + ", Received: " + (data.length() - lengthHeaderSize).toString());
     }
     log:printDebug(string `[ISO8583] Received response from TCP server(base 16)`, response = base16Result);
     int nextIndex = lengthHeaderSize * 2 + customHeaderLength * 2;
