@@ -20,7 +20,7 @@ import ballerina/data.jsondata;
 import ballerina/lang.array;
 import ballerina/log;
 
-# Parse ISO 8583 message string and transform to a ISO 8583 reecord.
+# Parse ISO 8583 message string and transform to a ISO 8583 record.
 #
 # + isoMessage - ISO 8583 message
 # + return - ISO 8583 record as anydata
@@ -238,12 +238,12 @@ function countBitmapsFromHexString(string data) returns int|error {
     // parse the first character of the bitmap to determine whether there are more bitmaps
     int count = 1;
     int idx = 0;
-    int a = check int:fromHexString(data.substring(idx, idx + 2));
+    int firstChar = check int:fromHexString(data.substring(idx, idx + 2));
 
-    while (hasMoreBitmaps(a)) {
+    while (hasMoreBitmaps(firstChar)) {
         count += 1;
         idx += 16;
-        a = check int:fromHexString(data.substring(idx, idx + 2));
+        firstChar = check int:fromHexString(data.substring(idx, idx + 2));
     }
     return count;
 }

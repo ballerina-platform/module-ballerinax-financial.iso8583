@@ -1,7 +1,5 @@
 # ISO 8583 Library
 
-## Overview
-
 ISO 8583 is a standard for systems that exchange electronic transaction messages, commonly used in financial transaction processing such as ATM, POS, and payment gateway systems. It defines the message format and communication flow for request and response transactions, including fields like the Message Type Indicator (MTI), bitmaps, and data elements.
 
 This library provides a lightweight and configurable implementation for working with ISO 8583 messages in Ballerina. It allows developers to parse raw ISO 8583 message strings into structured records, encode structured data into ISO 8583-compliant messages, and handle byte stream encoding/decoding for network communication. The library is highly extensible, supporting customizable message structures via external packager and element definition files. It also includes convenient utility functions for full message processing workflows.
