@@ -24,7 +24,6 @@ import ballerina/constraint;
 # + SystemTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.
 # + SettlementDate - The date when the transaction is settled.
 # + AcquiringInstitutionIdentificationCode - The identification code of the acquiring institution.
-# + AdditionalDataPrivate - Additional data (private).
 # + NetworkManagementInformationCode - The network management information code.
 # + NetworkManagementInformationChannelType - The network management information channel type.
 public type MTI_0800 record {|
@@ -59,13 +58,6 @@ public type MTI_0800 record {|
     string AcquiringInstitutionIdentificationCode?;
     @constraint:String {
          pattern: {
-            value: re `^[a-zA-Z0-9]+$`,
-            message: "Only alpha numeric values allowed for AdditionalDataPrivate"
-        }
-    }
-    string AdditionalDataPrivate?;
-    @constraint:String {
-         pattern: {
             value: re `^\d+`,
             message: "Only numeric values allowed for NetworkManagementInformationCode"
         }
@@ -88,7 +80,6 @@ public type MTI_0800 record {|
 # + SystemTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.
 # + SettlementDate - The date when the transaction is settled.
 # + AcquiringInstitutionIdentificationCode - The identification code of the acquiring institution.
-# + AdditionalDataPrivate - Additional data (private).
 # + NetworkManagementInformationCode - The network management information code.
 # + NetworkManagementInformationChannelType - The network management information channel type.
 # + ResponseCode - A code indicating the result of the authorization request.
@@ -122,13 +113,6 @@ public type MTI_0810 record {|
         }
     }
     string AcquiringInstitutionIdentificationCode?;
-    @constraint:String {
-         pattern: {
-            value: re `^[a-zA-Z0-9]+$`,
-            message: "Only alpha numeric values allowed for AdditionalDataPrivate"
-        }
-    }
-    string AdditionalDataPrivate?;
     @constraint:String {
          pattern: {
             value: re `^\d+`,

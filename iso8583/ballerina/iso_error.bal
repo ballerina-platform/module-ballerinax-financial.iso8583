@@ -19,7 +19,7 @@
 # + message - error message
 # + errorCode - error code
 # + return - return isoError
-public isolated function createISOError(string message, string? errorCode = ()) returns ISOError {
+isolated function createISOError(string message, string? errorCode = ()) returns ISOError {
     ISOError isoError = {
         message: message,
         errorCode: errorCode
