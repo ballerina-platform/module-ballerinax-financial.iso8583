@@ -307,6 +307,22 @@ function testDecodeByteStreamWithAsciiHeaderLength() {
 }
 
 @test:Config {}
+function testDecodeByteStreamWithoutLengthHeader() {
+    [string, string, string]|ISOError result =
+        decodeByteStream(BYTE_STREAM_WITHOUT_CUSTOM_HEADER_AND_WITHOUT_LENGTH_HEADER, lengthHeaderSize = 0);
+
+    if result is [string, string, string] {
+        test:assertEquals(result[0], "0200", msg = "MTI mismatch");
+        test:assertEquals(result[1], "F23AC48108A080000000000006000000".toLowerAscii(), msg = "Bitmap mismatch");
+        test:assertEquals(result[2], "122003000063173100000000000011110828071332897953134210082808280828482901100060" +
+                "460004241124280421111509114665372D6538AC109mobileLKA05099144D000014411NTBCLKLXXXX11NTBCLKLXXXX",
+                msg = "Payload mismatch");
+    } else {
+        test:assertFail(msg = "Failed to decode byte stream. " + result.message);
+    }
+}
+
+@test:Config {}
 function testDecodeByteStreamWithCustomHeader() {
     [string, string, string]|ISOError result =
         decodeByteStream(BYTE_STREAM_WITH_CUSTOM_HEADER_AND_WITH_NON_ASCII_LENGTH, customHeaderLength = 12);
