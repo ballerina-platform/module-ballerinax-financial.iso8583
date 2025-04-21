@@ -16,8 +16,8 @@
 
 import ballerina/constraint;
 
-# MTI 42X - Reversal Advice.
-# The `MTI_42X` record represents a reversal advice in the ISO 8583 standard.
+# MTI 042X - Reversal Advice.
+# The `MTI_042X` record represents a reversal advice in the ISO 8583 standard.
 # This can be used to represent message types 420 and 421
 #
 # + MTI - The message type indicator (MTI) of the transaction.  
@@ -27,33 +27,19 @@ import ballerina/constraint;
 # + DateAndTimeTransmission - The date and time when the transaction was initiated.  
 # + ConversionRateCardholderBilling - The conversion rate for cardholder billing.  
 # + SystemsTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.  
-# + DateAndTimeLocalTransaction - The local date and time at the point of transaction.  
-# + DateEffective - The effective date of the transaction.  
-# + DateExpiration - The expiration date of the transaction.  
-# + DateCapture - The date when the transaction was captured.
-# + TransactionLifeCycleIdentificationData - The transaction life cycle identification data.  
-# + POSDataCode - The point of service (POS) data code.  
-# + CardSequenceNumber - The sequence number of the card.  
-# + FunctionCode - The function code of the transaction.  
-# + MessageReasonCode - The reason code of the message.
-# + MerchantCategoryCode - The category code of the merchant.  
-# + AmountsOriginal - The original amount of the transaction.  
+# + TimeLocalTransaction - The local time at the point of transaction.  
+# + CountryCodeForwardingInstitution - The country code of the forwarding institution.
+# + NetworkInternationalIdentifier - The network international identifier.
+# + PointOfServiceConditionCode - The point of sale condition code.
+# + AmountTransactionProcessingFee - The transaction processing fee.
 # + AcquiringInstitutionIdentificationCode - The identification code of the acquiring institution.  
 # + ForwardingInstitutionIdentificationCode - The identification code of the forwarding institution.  
-# + Track2Data - The track 2 data of the card.  
-# + Track3Data - The track 3 data of the card.  
-# + ApprovalCode - The approval code of the transaction.
-# + ActionCode - The action code of the transaction.
-# + ServiceCode - The service code of the transaction.  
 # + CardAcceptorTerminalIdentification - The identification code of the terminal where the card was accepted.  
-# + CardAcceptorIdentificationCode - The identification code of the card accepter.  
-# + CardAcceptorNameLocation - The name and location of the card accepter.  
-# + Track1Data - The track 1 data of the card.  
-# + AmountsFees - The amount of the transaction fees.  
-# + AuthorizingAgentInstitutionIdentificationCode - The identification code of the authorizing agent.
+# + CardAcceptorIdentificationCode - The identification code of the card accepter. 
+# + CustomerRelatedData - The customer related data.
 # + ReceivingInstitutionIdentificationCode - The identification code of the receiving institution.
 
-public type MTI_42X record {|
+public type MTI_042X record {|
     string MTI = "420";
     @constraint:String {
         pattern: {
@@ -100,32 +86,32 @@ public type MTI_42X record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for DateAndTimeLocalTransaction"
+            message: "Only numeric values allowed for TimeLocalTransaction"
         }
     }
-    string DateAndTimeLocalTransaction;
-    string TransactionLifeCycleIdentificationData?;
+    string TimeLocalTransaction;
+    string CountryCodeForwardingInstitution?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for FunctionCode"
+            message: "Only numeric values allowed for NetworkInternationalIdentifier"
         }
     }
-    string FunctionCode;
+    string NetworkInternationalIdentifier;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for MessageReasonCode"
+            message: "Only numeric values allowed for PointOfServiceConditionCode"
         }
     }
-    string MessageReasonCode;
+    string PointOfServiceConditionCode;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for AmountsOriginal"
+            message: "Only numeric values allowed for AmountTransactionProcessingFee"
         }
     }
-    string AmountsOriginal?;
+    string AmountTransactionProcessingFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -142,61 +128,42 @@ public type MTI_42X record {|
     string ForwardingInstitutionIdentificationCode?;
     string CardAcceptorTerminalIdentification?;
     string CardAcceptorIdentificationCode?;
-    string AmountsFees?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for OriginalDataElements"
+            message: "Only numeric values allowed for CustomerRelatedData"
         }
     }
-    string OriginalDataElements;
-    @constraint:String {
-        pattern: {
-            value: re `^\d+`,
-            message: "Only numeric values allowed for AuthorizingAgentInstitutionIdentificationCode"
-        }
-    }
-    string AuthorizingAgentInstitutionIdentificationCode?;
+    string CustomerRelatedData;
     string ReceivingInstitutionIdentificationCode?;
 |};
 
-# MTI 430 - Reversal Advice Response.
-# The `MTI_430` record represents a reversal advice response in the ISO 8583 standard.
+# MTI 0430 - Reversal Advice Response.
+# The `MTI_0430` record represents a reversal advice response in the ISO 8583 standard.
 #
 # + MTI - The message type indicator (MTI) of the transaction.  
 # + PrimaryAccountNumber - The primary account number (PAN) of the cardholder.  
 # + ProcessingCode - A code indicating the type of transaction being performed.  
 # + AmountTransaction - The amount of the transaction.  
+# + AmountSettlement - The amount for settlement.
 # + DateAndTimeTransmission - The date and time when the transaction was initiated.  
+# + ConversionRateSettlement - The conversion rate for settlement.
 # + ConversionRateCardholderBilling - The conversion rate for cardholder billing.  
 # + SystemsTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.  
-# + DateAndTimeLocalTransaction - The local date and time at the point of transaction.  
-# + DateEffective - The effective date of the transaction.  
-# + DateExpiration - The expiration date of the transaction.  
-# + DateCapture - The date when the transaction was captured.
-# + TransactionLifeCycleIdentificationData - The transaction life cycle identification data.  
-# + POSDataCode - The point of service (POS) data code.  
-# + CardSequenceNumber - The sequence number of the card.  
-# + FunctionCode - The function code of the transaction.  
-# + MessageReasonCode - The reason code of the message.
-# + MerchantCategoryCode - The category code of the merchant.  
-# + AmountsOriginal - The original amount of the transaction.  
+# + TimeLocalTransaction - The local time at the point of transaction.  
+# + DateConversion - The date of conversion.
+# + MerchantType - The merchant type code.
+# + CountryCodeForwardingInstitution - The country code of the forwarding institution.
+# + AmountTransactionFee - The transaction fee.
+# + AmountSettlementFee - The settlement fee.
 # + AcquiringInstitutionIdentificationCode - The identification code of the acquiring institution.  
 # + ForwardingInstitutionIdentificationCode - The identification code of the forwarding institution.  
-# + Track2Data - The track 2 data of the card.  
-# + Track3Data - The track 3 data of the card.  
-# + ApprovalCode - The approval code of the transaction.
-# + ActionCode - The action code of the transaction.
-# + ServiceCode - The service code of the transaction.  
+# + ResponseCode - The response code of the transaction.
 # + CardAcceptorTerminalIdentification - The identification code of the terminal where the card was accepted.  
 # + CardAcceptorIdentificationCode - The identification code of the card accepter.  
-# + CardAcceptorNameLocation - The name and location of the card accepter.  
-# + Track1Data - The track 1 data of the card.  
-# + AmountsFees - The amount of the transaction fees.  
-# + AuthorizingAgentInstitutionIdentificationCode - The identification code of the authorizing agent.
 # + ReceivingInstitutionIdentificationCode - The identification code of the receiving institution.
 
-public type MTI_430 record {|
+public type MTI_0430 record {|
     string MTI = "430";
     @constraint:String {
         pattern: {
@@ -222,10 +189,10 @@ public type MTI_430 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for AmountReconciliation"
+            message: "Only numeric values allowed for AmountSettlement"
         }
     }
-    string AmountReconciliation?;
+    string AmountSettlement?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -236,10 +203,10 @@ public type MTI_430 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ConversionRateReconciliation"
+            message: "Only numeric values allowed for ConversionRateSettlement"
         }
     }
-    string ConversionRateReconciliation?;
+    string ConversionRateSettlement?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -257,10 +224,10 @@ public type MTI_430 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for DateAndTimeLocalTransaction"
+            message: "Only numeric values allowed for TimeLocalTransaction"
         }
     }
-    string DateAndTimeLocalTransaction;
+    string TimeLocalTransaction;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -268,22 +235,22 @@ public type MTI_430 record {|
         }
     }
     string DateConversion?;
-    string MessageErrorIndicator?;
-    string TransactionLifeCycleIdentificationData?;
+    string MerchantType?;
+    string CountryCodeForwardingInstitution?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for DateReconciliation"
+            message: "Only numeric values allowed for AmountTransactionFee"
         }
     }
-    string DateReconciliation?;
+    string AmountTransactionFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ReconciliationIndicator"
+            message: "Only numeric values allowed for AmountSettlementFee"
         }
     }
-    string ReconciliationIndicator?;
+    string AmountSettlementFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -301,54 +268,46 @@ public type MTI_430 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ActionCode"
+            message: "Only numeric values allowed for ResponseCode"
         }
     }
-    string ActionCode;
+    string ResponseCode;
     string CardAcceptorTerminalIdentification?;
     string CardAcceptorIdentificationCode?;
-    string AmountsFees?;
-    string TransportData?;
     string ReceivingInstitutionIdentificationCode?;
 |};
 
-# MTI 440 - Reversal Notification.
-# The `MTI_440` record represents a reversal notification in the ISO 8583 standard.
+# MTI 0440 - Reversal Notification.
+# The `MTI_0440` record represents a reversal notification in the ISO 8583 standard.
 #
 # + MTI - The message type indicator (MTI) of the transaction.  
 # + PrimaryAccountNumber - The primary account number (PAN) of the cardholder.  
 # + ProcessingCode - A code indicating the type of transaction being performed.  
 # + AmountTransaction - The amount of the transaction.  
+# + AmountSettlement - The amount for settlement.
 # + DateAndTimeTransmission - The date and time when the transaction was initiated.  
+# + ConversionRateSettlement - The conversion rate for settlement.
 # + ConversionRateCardholderBilling - The conversion rate for cardholder billing.  
 # + SystemsTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.  
-# + DateAndTimeLocalTransaction - The local date and time at the point of transaction.  
-# + DateEffective - The effective date of the transaction.  
-# + DateExpiration - The expiration date of the transaction.  
-# + DateCapture - The date when the transaction was captured.
-# + TransactionLifeCycleIdentificationData - The transaction life cycle identification data.  
-# + POSDataCode - The point of service (POS) data code.  
-# + CardSequenceNumber - The sequence number of the card.  
-# + FunctionCode - The function code of the transaction.  
-# + MessageReasonCode - The reason code of the message.
-# + MerchantCategoryCode - The category code of the merchant.  
-# + AmountsOriginal - The original amount of the transaction.  
+# + TimeLocalTransaction - The local time at the point of transaction.  
+# + DateConversion - The date of conversion.
+# + CountryCodeForwardingInstitution - The country code of the forwarding institution.
+# + NetworkInternationalIdentifier - The network international identifier.
+# + PointOfServiceConditionCode - The point of sale condition code.
+# + AmountTransactionFee - The transaction fee.
+# + AmountSettlementFee - The settlement fee.
+# + AmountTransactionProcessingFee - The transaction processing fee.
 # + AcquiringInstitutionIdentificationCode - The identification code of the acquiring institution.  
 # + ForwardingInstitutionIdentificationCode - The identification code of the forwarding institution.  
-# + Track2Data - The track 2 data of the card.  
-# + Track3Data - The track 3 data of the card.  
-# + ApprovalCode - The approval code of the transaction.
-# + ActionCode - The action code of the transaction.
-# + ServiceCode - The service code of the transaction.  
+# + ResponseCode - The response code of the transaction.
 # + CardAcceptorTerminalIdentification - The identification code of the terminal where the card was accepted.  
 # + CardAcceptorIdentificationCode - The identification code of the card accepter.  
-# + CardAcceptorNameLocation - The name and location of the card accepter.  
-# + Track1Data - The track 1 data of the card.  
-# + AmountsFees - The amount of the transaction fees.  
-# + AuthorizingAgentInstitutionIdentificationCode - The identification code of the authorizing agent.
+# + CustomerRelatedData - The customer related data.
+# + ReservedNationalData58 - The reserved national data.  
+# + ReceivingInstitutionCountryCode - The country code of the receiving institution.
 # + ReceivingInstitutionIdentificationCode - The identification code of the receiving institution.
 
-public type MTI_440 record {|
+public type MTI_0440 record {|
     string MTI = "440";
     @constraint:String {
         pattern: {
@@ -374,10 +333,10 @@ public type MTI_440 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for AmountReconciliation"
+            message: "Only numeric values allowed for AmountSettlement"
         }
     }
-    string AmountReconciliation?;
+    string AmountSettlement?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -388,10 +347,10 @@ public type MTI_440 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ConversionRateReconciliation"
+            message: "Only numeric values allowed for ConversionRateSettlement"
         }
     }
-    string ConversionRateReconciliation?;
+    string ConversionRateSettlement?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -409,10 +368,10 @@ public type MTI_440 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for DateAndTimeLocalTransaction"
+            message: "Only numeric values allowed for TimeLocalTransaction"
         }
     }
-    string DateAndTimeLocalTransaction;
+    string TimeLocalTransaction;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -420,42 +379,42 @@ public type MTI_440 record {|
         }
     }
     string DateConversion?;
-    string TransactionLifeCycleIdentificationData?;
+    string CountryCodeForwardingInstitution?;
         @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for FunctionCode"
+            message: "Only numeric values allowed for NetworkInternationalIdentifier"
         }
     }
-    string FunctionCode;
+    string NetworkInternationalIdentifier;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for MessageReasonCode"
+            message: "Only numeric values allowed for PointOfServiceConditionCode"
         }
     }
-    string MessageReasonCode;
+    string PointOfServiceConditionCode;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for DateReconciliation"
+            message: "Only numeric values allowed for AmountTransactionFee"
         }
     }
-    string DateReconciliation?;
+    string AmountTransactionFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ReconciliationIndicator"
+            message: "Only numeric values allowed for AmountSettlementFee"
         }
     }
-    string ReconciliationIndicator?;
+    string AmountSettlementFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for AmountsOriginal"
+            message: "Only numeric values allowed for AmountTransactionProcessingFee"
         }
     }
-    string AmountsOriginal?;
+    string AmountTransactionProcessingFee?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
@@ -473,38 +432,37 @@ public type MTI_440 record {|
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for ActionCode"
+            message: "Only numeric values allowed for ResponseCode"
         }
     }
-    string ActionCode;
+    string ResponseCode;
     string CardAcceptorTerminalIdentification?;
     string CardAcceptorIdentificationCode?;
-    string AmountsFees?;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for OriginalDataElements"
+            message: "Only numeric values allowed for CustomerRelatedData"
         }
     }
-    string OriginalDataElements;
+    string CustomerRelatedData;
     @constraint:String {
         pattern: {
             value: re `^\d+`,
-            message: "Only numeric values allowed for AuthorizingAgentInstitutionIdentificationCode"
+            message: "Only numeric values allowed for ReservedNationalData58"
         }
     }
-    string AuthorizingAgentInstitutionIdentificationCode?;
-    string FileTransferMessageControl?;
+    string ReservedNationalData58?;
+    string ReceivingInstitutionCountryCode?;
     string ReceivingInstitutionIdentificationCode?;
 |};
 
-# MTI 450 - Reversal Notification Acknowledgement Request.
-# The `MTI_450` record represents a reversal notification acknowledgement in the ISO 8583 standard.
+# MTI 0450 - Reversal Notification Acknowledgement Request.
+# The `MTI_0450` record represents a reversal notification acknowledgement in the ISO 8583 standard.
 #
 # + MTI - The message type indicator (MTI) of the transaction.  
 # + SystemsTraceAuditNumber - A unique number assigned to the transaction for tracking purposes.  
-# + TransactionLifeCycleIdentificationData - The transaction life cycle identification data.  
-# + FileTransferMessageControl - The file transfer message control.
+# + CountryCodeForwardingInstitution - The country code of the forwarding institution.
+# + ReceivingInstitutionCountryCode - The country code of the receiving institution.
 
 public type MTI_0450 record {|
     string MTI = "450";
@@ -515,6 +473,6 @@ public type MTI_0450 record {|
         }
     }
     string SystemsTraceAuditNumber;
-    string TransactionLifeCycleIdentificationData?;
-    string FileTransferMessageControl?;
+    string CountryCodeForwardingInstitution?;
+    string ReceivingInstitutionCountryCode?;
 |};
