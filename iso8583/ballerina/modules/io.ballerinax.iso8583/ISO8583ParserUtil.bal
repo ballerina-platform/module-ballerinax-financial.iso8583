@@ -114,7 +114,8 @@ public function newISO8583ParserUtil1() returns ISO8583ParserUtil {
 public isolated function ISO8583ParserUtil_encode(string arg0) returns string|ISO8583Exception {
     handle|error externalObj = io_ballerinax_iso8583_ISO8583ParserUtil_encode(java:fromString(arg0));
     if (externalObj is error) {
-        ISO8583Exception e = error ISO8583Exception(ISO8583EXCEPTION, externalObj, message = externalObj.message());
+        string|error message = externalObj.detail()["message"].ensureType(string);
+        ISO8583Exception e = error ISO8583Exception(message is string ? message : ISO8583EXCEPTION, externalObj, message = externalObj.message());
         return e;
     } else {
         return java:toString(externalObj) ?: "";
@@ -129,7 +130,8 @@ public isolated function ISO8583ParserUtil_encode(string arg0) returns string|IS
 public function ISO8583ParserUtil_initializeParser(string arg0, string arg1) returns ISO8583Exception? {
     error|() externalObj = io_ballerinax_iso8583_ISO8583ParserUtil_initializeParser(java:fromString(arg0), java:fromString(arg1));
     if (externalObj is error) {
-        ISO8583Exception e = error ISO8583Exception(ISO8583EXCEPTION, externalObj, message = externalObj.message());
+        string|error message = externalObj.detail()["message"].ensureType(string);
+        ISO8583Exception e = error ISO8583Exception(message is string ? message : ISO8583EXCEPTION, externalObj, message = externalObj.message());
         return e;
     }
 }
@@ -141,7 +143,8 @@ public function ISO8583ParserUtil_initializeParser(string arg0, string arg1) ret
 public isolated function ISO8583ParserUtil_unpackISOMessage(string arg0) returns string|ISO8583Exception {
     handle|error externalObj = io_ballerinax_iso8583_ISO8583ParserUtil_unpackISOMessage(java:fromString(arg0));
     if (externalObj is error) {
-        ISO8583Exception e = error ISO8583Exception(ISO8583EXCEPTION, externalObj, message = externalObj.message());
+        string|error message = externalObj.detail()["message"].ensureType(string);
+        ISO8583Exception e = error ISO8583Exception(message is string ? message : ISO8583EXCEPTION, externalObj, message = externalObj.message());
         return e;
     } else {
         return java:toString(externalObj) ?: "";

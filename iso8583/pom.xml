@@ -5,7 +5,7 @@
 
     <groupId>io.ballerinax</groupId>
     <artifactId>iso8583-parent</artifactId>
-    <version>0.8.0</version>
+    <version>1.0.0</version>
     <name>ISO 8583 Java Library</name>
 
     <modules>
